@@ -1,0 +1,61 @@
+.timer {
+  &__heading {
+    font-size : 20px;
+    width     : 240px;
+    text-align: center;
+  }
+
+  &__button {
+    margin       : 2px 4px;
+    border       : 1px solid grey;
+    cursor       : pointer;
+    padding      : 2px;
+    width        : 76px;
+    height       : 30px;
+    line-height  : 30px;
+    border-radius: 0;
+  }
+
+  &__control-btn {
+    &-wrap {
+      width     : 240px;
+      text-align: right;
+
+    }
+
+    &--pause {
+      margin-right    : 8px;
+      color           : #fff;
+      background-color: red;
+      padding         : 10px 15px;
+      border          : none;
+      min-width       : 70px;
+      outline         : none;
+      cursor          : pointer;
+    }
+
+    &--start {
+      color           : #fff;
+      background-color: red;
+      padding         : 10px 15px;
+      border          : none;
+      min-width       : 70px;
+      outline         : none;
+      cursor          : pointer;
+    }
+  }
+}
+
+.mat-form-field {
+  width: 20%;
+}
+
+.mat-input-element {
+  background-color: black;
+  border-radius   : 20px;
+  padding         : 20px;
+  color           : #fff;
+  font-size       : 30px;
+  width           : 215px;
+  text-align      : center;
+}
