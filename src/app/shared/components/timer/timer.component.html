@@ -2,13 +2,17 @@
   <h2 class="timer__heading">Timer</h2>
   <div class="timer__body">
     <mat-form-field class="timer__title">
-      <input matInput="number" value=00:{{timeLeft}}> <br>
-      <button mat-button [style.display] = " buttonsDisplay ? 'inline' : 'none'" class="timer__button" (click)="onClick()" *ngFor="let button of  buttonsText">
-        {{ button.btnName }} </button>
-       <div class="timer__control-btn-wrap" [style.display] = "isDisplay ? 'block' : 'none'"> 
-        <button mat button class="timer__control-btn--pause" (click) =" pauseTimer()"> Pause </button>
-        <button mat button class="timer__control-btn--start" (click) = "resetAgain()"> Reset </button>
-      </div>
+       <p>{{ dateValue | date: 'mm:ss' }}</p> 
+      <input matInput="number" value= "{{ timeLeft | date: 'mm:ss' }}"> <br>
+      <button mat-button [style.display] = " buttonsDisplay ? 'inline' : 'none'"
+      *ngFor="let button of buttonsText; index as i"  
+      class="timer__button" (click)="onClick(i) ">
+          {{ button.btnName }} </button>
+        <div class="timer__control-btn-wrap" [style.display] = "isDisplay ? 'block' : 'none'"> 
+          <button mat button class="timer__control-btn--pause" (click) =" pauseTimer()" *ngIf = "pauseBtn">  Pause </button>
+          <button mat button class="timer__control-btn--pause" (click) =" restartTimer()" *ngIf = "!pauseBtn"> Restart </button>
+          <button mat button class="timer__control-btn--start" (click) = "resetTimer()"> Reset </button>
+       </div>
     </mat-form-field>
   </div>
 </div>

@@ -4,7 +4,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@base/app/material.module';
 // import { LoaderComponent } from './components/loader/loader.component';
 import { TimerComponent } from './components/timer/timer.component'
-
+// import { CountdownModule } from 'ngx-countdown';
+// import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,12 @@ import { TimerComponent } from './components/timer/timer.component'
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
+    // CountdownModule
   ],
   exports: [
     // LoaderComponent,
-    TimerComponent
+    TimerComponent,
+    // CountdownModule
   ]
 })
 export class SharedModule { }
