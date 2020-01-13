@@ -1,31 +1,29 @@
 <div class="timer">
   <h2 class="timer__heading">Timer</h2>
   <div class="timer__body">
-    <mat-form-field class="timer__title">
-      <input matInput="number" value="{{ timeLeft | minuteSeconds }}" readonly> <br>
+    <form class="timer__title">
+      <input matInput="number" value="{{ timeLeft | minuteSeconds }}" readonly class="timer__input-display"> <br>
       <button mat-button [style.display]=" buttonsDisplay ? 'inline' : 'none'"
         *ngFor="let button of buttonsText; index as i" class="timer__button" (click)="onClick(i) ">
         {{ button.btnName }} </button>
       <div class="timer__control-btn-wrap" [style.display]="isDisplay ? 'block' : 'none'">
-        <button mat button class="timer__control-btn--pause timer__control-btn--pause-start" (click)=" pauseTimer()" *ngIf="pauseBtn"> Pause </button>
+        <button mat button class="timer__control-btn--pause timer__control-btn--pause-start" (click)=" pauseTimer()"
+          *ngIf="pauseBtn"> Pause </button>
         <button mat button class="timer__control-btn--pause" (click)=" restartTimer()" *ngIf="!pauseBtn"> Restart
         </button>
-        <button mat button class="timer__control-btn--start timer__control-btn--pause-start" (click)="resetTimer()"> Reset </button>
+        <button mat button class="timer__control-btn--start timer__control-btn--pause-start" (click)="resetTimer()">
+          Reset </button>
       </div>
-    </mat-form-field>
+    </form>
 
     <div class="timer__custom-box" *ngIf="customBox">
       <button class="timer__startbtn" (click)="customvalueClick()" *ngIf="startBtn">start</button> <br>
       <div *ngIf="quickbtnSec">
-        <button class="timer__min"> {{initialValue }}
-          <span class="up" (click)="incrementValue()"></span>
-          <span class="down" (click)="decrementValue()"></span>
-        </button>
-        : <button class="timer__sec"> {{ secinitialValue }}
-          <span class="up" (click)="secincrementValue()"></span>
-          <span class="down" (click)="secdecrementValue()"></span>
-        </button> <br>
-        <button class="timer__quick" (click)="resetTimer()"> quick </button>
+        <form class = "styled-form">
+          <input matInput type="number" [(ngModel)] = "initialValue"   class="timer__custom-value-box" name= "min"> :
+          <input matInput type="number" [(ngModel)] = "secinitialValue"  class="timer__custom-value-box" name="sec">
+          <button class="timer__quick" (click)="resetTimer()"> quick </button>
+        </form>
       </div>
     </div>
   </div>

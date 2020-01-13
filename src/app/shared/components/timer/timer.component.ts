@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { MinuteSecondsPipe } from './timer.pipe'
-
 
 @Component({
   selector: 'app-timer',
@@ -9,34 +8,30 @@ import { MinuteSecondsPipe } from './timer.pipe'
   providers: [MinuteSecondsPipe]
 })
 
-
-
 export class TimerComponent implements OnInit {
-
-  dateValue = 3600 * 1000;
   timerFormat = true;
   timeLeft = 0;
   interval: any;
   isDisplay = false;
   buttonsDisplay = true;
   pauseBtn = true;
-  initialValue = 0;
+  initialValue = 1;
   secinitialValue = 0;
   customBox = false;
   quickbtnSec = true;
   startBtn = true;
 
   buttonsText = [
-    { id: 1, btnName: "10 SEC", btnInterval: 10 },
-    { id: 2, btnName: "20 SEC", btnInterval: 20 },
-    { id: 3, btnName: "30 SEC", btnInterval: 30 },
-    { id: 4, btnName: "40 SEC", btnInterval: 40 },
-    { id: 5, btnName: "60 SEC", btnInterval: 50 },
-    { id: 6, btnName: "2 MIN",  btnInterval:  120 },
-    { id: 7, btnName: "3 MIN",  btnInterval: 180 },
-    { id: 8, btnName: "4 MIN",  btnInterval: 240 },
-    { id: 9, btnName: "5 MIN",  btnInterval: 300 },
-    { id: 10,btnName: "CUSTOM", btnInterval: 0 }
+    { id: 1,  btnName: "10 SEC", btnInterval: 10 },
+    { id: 2,  btnName: "20 SEC", btnInterval: 20 },
+    { id: 3,  btnName: "30 SEC", btnInterval: 30 },
+    { id: 4,  btnName: "40 SEC", btnInterval: 40 },
+    { id: 5,  btnName: "60 SEC", btnInterval: 60 },
+    { id: 6,  btnName: "2 MIN",  btnInterval: 120 },
+    { id: 7,  btnName: "3 MIN",  btnInterval: 180 },
+    { id: 8,  btnName: "4 MIN",  btnInterval: 240 },
+    { id: 9,  btnName: "5 MIN",  btnInterval: 300 },
+    { id: 10, btnName: "CUSTOM", btnInterval: 0 }
   ]
 
   constructor() { }
@@ -59,6 +54,7 @@ export class TimerComponent implements OnInit {
       this.timeLeft = 0;
       this.initialValue = 0;
       this.secinitialValue = 0;
+      this.quickbtnSec = true;
     }
   }
 
@@ -90,43 +86,14 @@ export class TimerComponent implements OnInit {
     this.customBox = false;
   }
 
-  incrementValue() {
-    this.initialValue++;
-  }
-
-  decrementValue() {
-    if (this.initialValue === 0) {
-      this.initialValue;
-    }
-    else {
-      this.initialValue -= 1;
-    }
-  }
-
-  secincrementValue() {
-    this.secinitialValue += 1;
-  }
-
-  secdecrementValue() {
-    if (this.secinitialValue === 0) {
-      this.secinitialValue = 0;
-    }
-    else {
-      this.secinitialValue -= 1;
-    }
-  }
-
   customvalueClick() {
-    if (this.timeLeft > this.initialValue && this.timeLeft > this.secinitialValue) {
+    this.initialValue = this.initialValue * 60;
+     this.timeLeft = this.secinitialValue + this.initialValue;
+    if (this.timeLeft < this.secinitialValue) {
       this.startInterval();
     }
-    else {
-      this.timeLeft = 0;
-    }
-   console.log(this.timeLeft = this.initialValue);
-   console.log(this.timeLeft = this.secinitialValue);
-    this.quickbtnSec = true;
+    this.quickbtnSec = !this.quickbtnSec;
     this.isDisplay = true;
-    this.startBtn = true;
+    this.startBtn = false;
   }
 }

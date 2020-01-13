@@ -1,8 +1,24 @@
 .timer {
+  width     : 260px;
+  padding   : 10px 20px;
+  border    : 1px solid #000;
+  box-shadow: 0 3px 3px #000;
+
+  &__input-display {
+    background-color: black;
+    border-radius   : 20px;
+    padding         : 20px;
+    color           : #fff;
+    font-size       : 30px;
+    width           : 215px;
+    text-align      : center;
+  }
+
   &__heading {
-    font-size : 20px;
+    font-size : 30px;
     width     : 240px;
     text-align: center;
+    color     : Maroon;
   }
 
   &__button {
@@ -21,10 +37,8 @@
     &-wrap {
       width     : 240px;
       text-align: right;
-
-
-
     }
+
     &--start {
       color           : #fff;
       background-color: maroon;
@@ -47,43 +61,7 @@
       cursor          : pointer;
       border-radius   : 20px;
     }
-   
-  }
 
-  &__min {
-    display    : inline-block;
-    width      : 42px;
-    height     : 42px;
-    line-height: 42px;
-    background : none;
-    border     : 1px solid #000;
-    position   : relative;
-
-    &:hover {
-
-      .up,
-      .down {
-        display: inline-block;
-      }
-    }
-  }
-
-  &__sec {
-    display    : inline-block;
-    width      : 42px;
-    height     : 42px;
-    line-height: 42px;
-    background : none;
-    border     : 1px solid #000;
-    position   : relative;
-
-    &:hover {
-
-      .up,
-      .down {
-        display: inline-block;
-      }
-    }
   }
 
   &__custom-box {
@@ -114,52 +92,17 @@
     cursor          : pointer;
     float           : right;
   }
-}
 
-.up {
-  display         : inline-block;
-  border-left     : 4px solid transparent;
-  border-right    : 4px solid transparent;
-  border-bottom   : 9px solid #000;
-  background-color: lightgrey;
-  position        : absolute;
-  right           : 0;
-  top             : 10px;
-  cursor          : pointer;
-  display         : none;
-}
-
-.up:hover {
-  background-color: grey;
-}
-
-.down {
-  display         : inline-block;
-  border-left     : 4px solid transparent;
-  border-right    : 4px solid transparent;
-  border-top      : 9px solid #000;
-  background-color: lightgrey;
-  right           : 0;
-  bottom          : 10px;
-  position        : absolute;
-  cursor          : pointer;
-  display         : none;
-}
-
-.down:hover {
-  background-color: grey;
+  &__custom-value-box {
+    display    : inline-block;
+    width      : 42px;
+    height     : 42px;
+    line-height: 42px;
+    background : none;
+    border     : 1px solid #000;
+  }
 }
 
 .mat-form-field {
-  width: 20%;
-}
-
-.mat-input-element {
-  background-color: black;
-  border-radius   : 20px;
-  padding         : 20px;
-  color           : #fff;
-  font-size       : 30px;
-  width           : 215px;
-  text-align      : center;
+  width: 255px;
 }
