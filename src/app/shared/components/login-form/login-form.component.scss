@@ -1,0 +1,43 @@
+.login-form {
+    margin    : 20px;
+    max-width : 360px;
+    padding   : 20px 5px;
+    box-shadow: 0 2px 2px 2px #000;
+
+    &__submit-btn {
+        margin-left     : 70px;
+        padding            : 5px 45px;
+        border-radius      : 20px;
+        cursor             : pointer;
+    }
+}
+
+
+// Angular material styling
+
+.example-container>* {
+    width: 100%;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 330px;
+    width    : 100%;
+    padding  : 10px 0;
+    margin   : 0 auto;
+}
+
+.view-icon {
+    cursor: pointer;
+}
+
+
+.example-full-width {
+    width  : 100%;
+    padding: 18px 0;
+}
+
+.mat-display-1 {
+    text-align: center;
+    color     : rgb(44, 43, 43);
+}

@@ -1,0 +1,38 @@
+<div class="login-form">
+  <div class="mat-display-1">Login Form</div>
+
+  <form class="example-form" [formGroup]="form">
+
+    <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
+      <mat-label>Username*</mat-label>
+      <input matInput formControlName="username" type="text" placeholder="Enter your Name" />
+      <mat-error *ngIf="form.controls.username.invalid"> Name should have minimum 4 and maximum 20 characters, numbers &
+        special symbols are not allowed, should be alphabet and the first
+        letter should be capital. </mat-error> 
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
+      <mat-label>Email*</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Enter your email">
+      <mat-error>Enter correct email format, minimum 5 and maximum 30 chaaracters are allowed.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" placeholder="Enter Your Password" [type]="hide ? 'password' : 'text'"required>
+      <mat-icon matSuffix (click)="hide = !hide" class="view-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error>password must have minimum 8 characters in length, must contain atleast 1 uppercase 1 lowercase 1
+        number and 1 special character.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
+      <mat-label>Conform Password</mat-label>
+      <input matInput placeholder="Re-enter Password" formControlName="cnfpasswd" [type]="hide ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hide = !hide" class="view-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="form.controls.cnfpasswd.invalid"> Password and Conform password should match </mat-error>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button class="login-form__submit-btn" (click)="onSubmit()" [disabled]="form.invalid"
+    color="primary"> Submit Form Data</button>
+</div>

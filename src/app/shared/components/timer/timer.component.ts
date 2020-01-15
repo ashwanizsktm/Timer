@@ -97,3 +97,4 @@ export class TimerComponent implements OnInit {
     this.startBtn = false;
   }
 }
+
