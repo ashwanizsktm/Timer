@@ -1,15 +1,83 @@
 .login-form {
-    margin    : 20px;
+    margin    : 0 auto;
     max-width : 360px;
     padding   : 20px 5px;
     box-shadow: 0 2px 2px 2px #000;
 
     &__submit-btn {
-        margin-left     : 70px;
-        padding            : 5px 45px;
-        border-radius      : 20px;
-        cursor             : pointer;
+        margin-left  : 70px;
+        padding      : 5px 45px;
+        border-radius: 20px;
+        cursor       : pointer;
     }
+}
+
+
+meter{
+    width: 330px;
+    height: 8px;
+}
+
+// .password-strength-meter {
+//     margin       : 10px 0;
+//     height       : 5px;
+//     border       : 1px solid black;
+//     border-radius: 5px;
+// }
+
+// .strength-meter-fail-status {
+//     display           : inherit;
+//     height            : 5px;
+//     width             : 5%;
+//     background-color  : red;
+//     animation-name    : example;
+//     animation-duration: 4s;
+// }
+
+// @keyframes example {
+//     from {
+//         width: 5%;
+//     }
+
+//     to {
+//         width: 45%;
+//     }
+// }
+
+// .strength-meter-fail-status:hover {
+//     width: 40%;
+// }
+
+// .strength-meter-sucess-status {
+//     display         : inherit;
+//     height          : 5px;
+//     width           : 50%;
+//     background-color: green;
+//     transition      : width 2s;
+// }
+
+// .strength-meter-sucess-status:hover {
+//     width: 100%;
+// }
+
+
+.password-status {
+    display   : block;
+    font-size : 12px;
+    margin-top: 5px;
+    // margin-left: 10px;
+}
+
+.weak{
+    color: red;
+}
+
+.strong{
+    color: rgb(231, 231, 26);
+}
+
+.very-strong{
+    color: green;
 }
 
 

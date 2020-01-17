@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passValidator } from './custom-validator';
 
-
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -12,9 +11,11 @@ import { passValidator } from './custom-validator';
 export class LoginFormComponent implements OnInit {
   hide = true;
   form: FormGroup;
-  response: any;
+  meterValue = 0;
+  passwordStatus = "weak";
 
   constructor(fb: FormBuilder) {
+
     this.form = fb.group({
       hideRequired: false,
       floatLabel: 'true',
@@ -33,11 +34,11 @@ export class LoginFormComponent implements OnInit {
           Validators.maxLength(30)
         ]
       ],
-    
+
       password: ['',
         [
           Validators.required,
-          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
+          Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')
         ]
       ],
 
@@ -47,13 +48,54 @@ export class LoginFormComponent implements OnInit {
         ],
       ]
     });
+
+
+    ;
+
+
+
     this.form.controls.password.valueChanges.subscribe(res => this.form.controls.cnfpasswd.updateValueAndValidity());
+
+    // this.form.controls.password.valueChanges.subscribe( response => console.log(response.match('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')));
+
+    this.form.controls.password.valueChanges.subscribe((response) => {
+      if (response.match('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')) {
+        this.meterValue = 100;
+      } 
+
+      else {
+        this.meterValue = 0;
+      }
+    }
+    );
+
+
+
+
+
   }
 
-  ngOnInit() {
-  }
+  //   if(this.form.get('password').value === ('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')) {
+
+  //   }
+
+  //   else {
+
+
+  //  }
+
+  ngOnInit() { }
 
   onSubmit() {
     console.log(this.form.value);
   }
+
+
+  //   onKeydown() {
+  //     //  event.value = this.form.get('password').value;
+  //     //  if(event.value === ('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')) {
+  //     //     console.log("password is validaated");    
+  //     //  }
+  // console.log(this.form.get('password').value);
+  //   }
 }

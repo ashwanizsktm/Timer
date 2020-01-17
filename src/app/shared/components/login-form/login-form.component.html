@@ -8,7 +8,7 @@
       <input matInput formControlName="username" type="text" placeholder="Enter your Name" />
       <mat-error *ngIf="form.controls.username.invalid"> Name should have minimum 4 and maximum 20 characters, numbers &
         special symbols are not allowed, should be alphabet and the first
-        letter should be capital. </mat-error> 
+        letter should be capital. </mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
@@ -19,17 +19,34 @@
 
     <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password" placeholder="Enter Your Password" [type]="hide ? 'password' : 'text'"required>
+      <input matInput formControlName="password" placeholder="Enter Your Password" [type]="hide ? 'password' : 'text'"
+        required>
       <mat-icon matSuffix (click)="hide = !hide" class="view-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      <mat-error>password must have minimum 8 characters in length, must contain atleast 1 uppercase 1 lowercase 1
-        number and 1 special character.</mat-error>
+      <mat-error>password must have minimum 8 characters in length, must contain atleast 1 uppercase 1 lowercase letter
+        1 number can add special symbol.</mat-error>
     </mat-form-field>
 
+    <!-- <div class="password-strength-meter">
+      <span [ngClass]="passwordStatus"></span>
+      <span *ngIf = "passwordtextStatus" class="password-status"> Weak Password </span>
+      <span *ngIf = "!passwordtextStatus" class="password-status"> Strong Password </span>
+    </div> -->
+    
+
+    <meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="{{ meterValue }}"></meter>
+<div [ngSwitch] = "passwordStatus">
+  <div *ngSwitchCase = "'weak'" class="password-status weak">weak password</div>
+  <div *ngSwitchCase = "'strong'" class="password-status strong">strong password</div>
+  <div *ngSwitchCase = "'very-strong'" class="password-status very-strong">very strong password</div>
+</div>
+
+ 
     <mat-form-field class="example-full-width" [floatLabel]="form.value.floatLabel">
       <mat-label>Conform Password</mat-label>
-      <input matInput placeholder="Re-enter Password" formControlName="cnfpasswd" [type]="hide ? 'password' : 'text'" required>
+      <input matInput placeholder="Re-enter Password" formControlName="cnfpasswd" [type]="hide ? 'password' : 'text'"
+        required>
       <mat-icon matSuffix (click)="hide = !hide" class="view-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      <mat-error *ngIf="form.controls.cnfpasswd.invalid"> Password and Conform password should match </mat-error>
+      <mat-error *ngIf="form.controls.cnfpasswd.invalid"> Password and Confirm password should match </mat-error>
     </mat-form-field>
   </form>
 
