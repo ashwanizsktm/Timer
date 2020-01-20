@@ -12,10 +12,9 @@ export class LoginFormComponent implements OnInit {
   hide = true;
   form: FormGroup;
   meterValue = 0;
-  passwordStatus = "weak";
-
+  passwordStatus = " ";
+  
   constructor(fb: FormBuilder) {
-
     this.form = fb.group({
       hideRequired: false,
       floatLabel: 'true',
@@ -48,54 +47,34 @@ export class LoginFormComponent implements OnInit {
         ],
       ]
     });
-
-
-    ;
-
-
-
     this.form.controls.password.valueChanges.subscribe(res => this.form.controls.cnfpasswd.updateValueAndValidity());
-
-    // this.form.controls.password.valueChanges.subscribe( response => console.log(response.match('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')));
-
     this.form.controls.password.valueChanges.subscribe((response) => {
       if (response.match('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')) {
         this.meterValue = 100;
-      } 
+        this.passwordStatus = 'very-strong';
+      }
+
+      else if (response.match('.{7,}')) {
+        console.log("you have entereed 7 character");
+        this.meterValue = 60;
+        this.passwordStatus = 'strong';
+      }
+
+      else if (response.match('.{5,}')) {
+        this.meterValue = 20;
+        this.passwordStatus = 'weak';
+      }
 
       else {
-        this.meterValue = 0;
+        this.meterValue = 2;
+        this.passwordStatus = 'weak';
       }
     }
     );
-
-
-
-
-
   }
 
-  //   if(this.form.get('password').value === ('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')) {
-
-  //   }
-
-  //   else {
-
-
-  //  }
-
   ngOnInit() { }
-
   onSubmit() {
     console.log(this.form.value);
   }
-
-
-  //   onKeydown() {
-  //     //  event.value = this.form.get('password').value;
-  //     //  if(event.value === ('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}')) {
-  //     //     console.log("password is validaated");    
-  //     //  }
-  // console.log(this.form.get('password').value);
-  //   }
 }
